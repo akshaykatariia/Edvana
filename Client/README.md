@@ -58,3 +58,4 @@ In this project, we are building a full-featured LMS platform where:
 ```bash
 git clone https://github.com/your-username/LMS_Edvana.git
 cd LMS_Edvana
+```
