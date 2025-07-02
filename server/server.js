@@ -6,11 +6,19 @@ import { clerkWebhooks } from './controllers/webhooks.js'
 import educatorRouter from './routes/educatorRoutes.js'
 import { clerkMiddleware } from '@clerk/express'
 import connectCloudinary from './configs/cloudinary.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 
 // Initialize Express
 const app = express()
+
+app.use('/favicon.ico', express.static(path.join(__dirname, 'favicon.ico')))
+
 
 await connectDB()
 await connectCloudinary()

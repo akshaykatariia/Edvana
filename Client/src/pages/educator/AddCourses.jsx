@@ -1,5 +1,6 @@
 // src/pages/educator/AddCourses.jsx
 import React, { useState } from "react";
+import axios from "axios";
 
 const AddCourses = () => {
   const [title, setTitle] = useState("");
@@ -42,28 +43,40 @@ const AddCourses = () => {
     setChapters(newChapters);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+
+    // Append thumbnail file directly
+    const imageFile = document.querySelector('input[type="file"]').files[0];
+    formData.append("image", imageFile);
+
+    // Append course data
     const course = {
       title,
       description,
       price,
       discount,
-      thumbnail,
       chapters,
     };
+    formData.append("courseData", JSON.stringify(course));
 
-    const existingCourses = JSON.parse(localStorage.getItem("courses") || "[]");
-    const updatedCourses = [...existingCourses, course];
-    localStorage.setItem("courses", JSON.stringify(updatedCourses));
+    try {
+      const response = await axios.post("http://localhost:5000/api/add-course", formData);
+      alert("Course added!");
 
-    setTitle("");
-    setDescription("");
-    setPrice(0);
-    setDiscount(0);
-    setChapters([{ name: "Introduction", lectures: [] }]);
-    setThumbnail(null);
-    alert("Course added!");
+      // Reset form
+      setTitle("");
+      setDescription("");
+      setPrice(0);
+      setDiscount(0);
+      setChapters([{ name: "Introduction", lectures: [] }]);
+      setThumbnail(null);
+    } catch (err) {
+      console.error("Error uploading course:", err);
+      alert("Something went wrong while uploading the course.");
+    }
   };
 
   return (
@@ -115,9 +128,9 @@ const AddCourses = () => {
             <input
               type="file"
               accept="image/*"
-              onChange={(e) =>
-                setThumbnail(URL.createObjectURL(e.target.files[0]))
-              }
+              onChange={(e) => {
+                setThumbnail(URL.createObjectURL(e.target.files[0]));
+              }}
             />
           </div>
         </div>
@@ -143,7 +156,7 @@ const AddCourses = () => {
                     key={lIndex}
                     className="flex justify-between items-center"
                   >
-                    {lIndex + 1}. {lec.title} - {lec.duration} mins -
+                    {lIndex + 1}. {lec.title} - {lec.duration} mins -{" "}
                     <a
                       href={lec.url}
                       className="text-blue-500"
@@ -151,7 +164,7 @@ const AddCourses = () => {
                       rel="noreferrer"
                     >
                       Link
-                    </a>
+                    </a>{" "}
                     - {lec.isFree ? "Free Preview" : "Paid"}
                     <button
                       type="button"
