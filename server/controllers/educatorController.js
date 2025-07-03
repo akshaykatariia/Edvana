@@ -1,6 +1,6 @@
-import { clerkClient } from '@clerk/express';
-import Course from '../models/Course.js';
-import { v2 as cloudinary } from 'cloudinary';
+import { clerkClient } from "@clerk/express";
+import Course from "../models/Course.js";
+import { v2 as cloudinary } from "cloudinary";
 
 // update role to educator
 export const updateRoleToEducator = async (req, res) => {
@@ -41,8 +41,6 @@ export const addCourse = async (req, res) => {
 
     res.json({ success: true, messgae: "Course Added" });
   } catch (error) {
-    res.json({ success: false, messgae: Error.message });
+    res.json({ success: false, messgae: error.message });
   }
 };
-
-
