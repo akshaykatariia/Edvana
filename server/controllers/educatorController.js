@@ -127,7 +127,8 @@ export const getEnrolledStudentsData = async (req, res) => {
       .populate("userId", "name imageUrl")
       .populate("courseId", "courseTitle");
 
-    const enrolledStudents = purchases.map((purchase) => ({  //  makes an object 
+    const enrolledStudents = purchases.map((purchase) => ({
+      //  makes an object
       student: purchase.userId,
       courseTitle: purchase.courseId.courseTitle,
       purchaseDate: purchase.createdAt,
