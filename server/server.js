@@ -9,6 +9,7 @@ import connectCloudinary from "./configs/cloudinary.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import courseRouter from "./routes/courseRoute.js";
+import userRouter from "./routes/userRoutes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,8 @@ app.post("/clerk", express.json(), clerkWebhooks);
 app.use("/api/educator", express.json(), educatorRouter); //Yeh function Clerk ke user
 //  ka role "educator" bana deta hai, taaki wo course publish kar sake.
 app.use("/api/course", express.json(), courseRouter);
+app.use("/api/user",express.json(), userRouter);
+
 
 // Port
 const PORT = process.env.PORT || 5000;
