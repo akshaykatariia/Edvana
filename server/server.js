@@ -28,6 +28,7 @@ app.use(clerkMiddleware());
 
 // Routes
 app.get("/", (req, res) => res.send("API Working"));
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.post("/clerk", express.json(), clerkWebhooks);
 app.use("/api/educator", express.json(), educatorRouter); //Yeh function Clerk ke user
 //  ka role "educator" bana deta hai, taaki wo course publish kar sake.
