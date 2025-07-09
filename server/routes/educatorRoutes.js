@@ -1,24 +1,24 @@
-import express from 'express'
-import { educatorDashboardData, getEnrolledStudentsData, updateRoleToEducator } from '../controllers/educatorController.js'
-import { protectEducator } from '../middlewares/authMiddleware.js'
-import { addCourse } from '../controllers/educatorController.js'
+import express from 'express' 
+import { addCourse, deleteCourse, educatorDeshboardData, geEducatorCourse, getEnrolledStudentData, updateRoleToEducator } from '../controllers/educatorController.js'
 import upload from '../configs/multer.js'
-import { getEducatorCourses } from '../controllers/educatorController.js'
+import { protectEducator } from '../middlewares/authMiddleWare.js'
 
+const educatorRouter = express.Router()
 
-const educatorRouter = express.Router() // new router bnaya 
+//add Educator Role 
+educatorRouter.get('/update-role', updateRoleToEducator)
 
-//Add educator role
-educatorRouter.get('/update-role', updateRoleToEducator) // jab koi get request bhejga toh 
-// updateroletoeducator chalega 
+// upload.single('image') takes the image from the frontend and stores it temporarily on the server. The file is available in req.file
 
-educatorRouter.post('/add-course', upload.single('image'), protectEducator, addCourse)// add course also saves data other than image 
+educatorRouter.post('/add-course',upload.single('image'),protectEducator,addCourse)
 
-educatorRouter.get('/courses', protectEducator, getEducatorCourses)
-educatorRouter.get('/dashboard', protectEducator, educatorDashboardData)
-educatorRouter.get('/enrolled-students', protectEducator, getEnrolledStudentsData)
+// router for get all courses
+educatorRouter.get('/courses',protectEducator,geEducatorCourse)
 
+educatorRouter.get('/dashboard',protectEducator,educatorDeshboardData)
+
+educatorRouter.get('/enorlled-students',protectEducator,getEnrolledStudentData)
+
+educatorRouter.delete('/delete-course/:courseId',deleteCourse)
 
 export default educatorRouter;
-
- 
