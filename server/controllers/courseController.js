@@ -33,4 +33,3 @@ export const getCourseId=async (req,res)=>{
         res.json({success:false,message:error.message});
     }
 }
-
