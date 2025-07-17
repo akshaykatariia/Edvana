@@ -11,7 +11,7 @@ export const clerkWebhooks = async (req, res) => {
     try {
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
 
-        // clerk sent JSON which contain eg.({"type":'user.created',"data":{id 23,name: kunal......}},   headers(svix-id: msg_abc123 svix-timestamp: 1719740000 svix-signature: v1,hmac-sha256=abcdef1234567890...))
+        // clerk sent JSON which contain eg.({"type":'user.created',"data":{id 23,name: akshay......}},   headers(svix-id: msg_abc123 svix-timestamp: 1719740000 svix-signature: v1,hmac-sha256=abcdef1234567890...))
 
         await whook.verify(JSON.stringify(req.body), {
             "svix-id": req.headers["svix-id"],
