@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import Course from '../models/Course.js';
 import Purchase from '../models/Purchase.js';
 import User from '../models/User.js';
-// import { CourseProgress } from '../models/CourseProgress.js';
+import { CourseProgress } from '../models/CourseProgress.js';
 
 // get user data
 export const getUserData = async (req, res) => {
