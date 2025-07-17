@@ -43,7 +43,6 @@ import profile_img2 from './profile_img2.png'
 import profile_img3 from './profile_img3.png'
 import lesson_icon from './lesson_icon.svg'
 
-
 export const assets = {
     logo,
     search_icon,
@@ -103,23 +102,23 @@ export const dummyEducatorData = {
 
 export const dummyTestimonial = [
     {
-        name: 'Donald Jackman',
+        name: 'Dev Sangwan',
         role: 'SWE 1 @ Amazon',
         image: assets.profile_img_1,
         rating: 5,
         feedback: 'I\'ve been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.',
     },
     {
-        name: 'Richard Nelson',
+        name: 'kaushal',
         role: 'SWE 2 @ Samsung',
-        image: assets.profile_img_2,
-        rating: 4,
+        image: assets.profile_img_1,
+        rating: 4,                  
         feedback: 'I\'ve been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.',
     },
     {
-        name: 'James Washington',
+        name: 'Sahil Shah',
         role: 'SWE 2 @ Google',
-        image: assets.profile_img_3,
+        image: assets.profile_img_1,
         rating: 4.5,
         feedback: 'I\'ve been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.',
     },
