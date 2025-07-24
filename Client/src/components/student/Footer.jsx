@@ -22,13 +22,13 @@ const Footer = () => {
               <a href="#">Home</a>
             </li>
             <li>
-              <Link to="/about-us">About us</Link>
+              <Link to="/">About us</Link>
             </li>
             <li>
-              <Link to="/contact-us">Contact us</Link>
+              <Link to="/">Contact us</Link>
             </li>
             <li>
-              <Link to="privacy-policy">Privacy policy</Link>
+              <Link to="/">Privacy policy</Link>
             </li>
           </ul>
         </div>
