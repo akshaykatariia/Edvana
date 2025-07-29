@@ -15,8 +15,7 @@ import DeleteCoursesGrid from './pages/educator/DeleteCoursesGrid';
 import Navbar from './components/student/Navbar';
 import PrivacyPolicy from './pages/student/PrivacyPolicy';
 import { ToastContainer } from 'react-toastify';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 import "quill/dist/quill.snow.css";
 
